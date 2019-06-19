@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,8 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'pizza.apps.PizzaConfig',
-    'shop.apps.ShopConfig',
+    # Third party apps
+    'rest_framework',
+
+    # My apps
+    'pizza',
+    'shop',
+    'api'
 ]
 
 MIDDLEWARE = [
