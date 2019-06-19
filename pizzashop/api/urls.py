@@ -1,24 +1,15 @@
 from django.conf.urls import url, include
-from django.contrib.auth.models import User
-from rest_framework import routers, serializers, viewsets
 
-# Serializers define the API representation.
+from rest_framework import routers
 
+from api.views import UserViewSet, PizzaViewSet, ToppingViewSet, PizzaToppingViewSet
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = User
-        fields = ('url', 'username', 'email', 'is_staff')
-
-
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
-
-# Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
+
 router.register(r'users', UserViewSet)
+router.register(r'pizza', PizzaViewSet)
+router.register(r'toppings', ToppingViewSet)
+router.register(r'pizzatoppings', PizzaViewSet)
 
 urlpatterns = [
     url(r'', include(router.urls)),
